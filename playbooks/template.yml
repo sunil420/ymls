@@ -1,0 +1,8 @@
+--- # My webserver
+- hosts: appserver
+  user: test
+  sudo: yes
+  gather_facts: yes
+  tasks:
+   - name: Testing Template
+     template: src=test.conf.j2 dest=/home/test/test.conf 

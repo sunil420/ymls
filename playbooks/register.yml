@@ -1,0 +1,12 @@
+--- # register 
+- hosts: appserver
+  user: test
+  sudo: yes
+  gather_facts: yes
+  tasks:
+   - name: Install httpd
+     yum: name=httpd state=installed
+   - name: verify the status
+     service: name=httpd state=started
+     register: result
+   - debug: var=result 

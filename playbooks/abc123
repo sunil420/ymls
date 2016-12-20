@@ -1,0 +1,31 @@
+
+PLAY [appserver] ************************************************************** 
+
+GATHERING FACTS *************************************************************** 
+ok: [server2]
+
+TASK: [Install httpd] ********************************************************* 
+ok: [server2]
+
+TASK: [verify the status] ***************************************************** 
+ok: [server2]
+
+TASK: [debug var=result] ****************************************************** 
+ok: [server2] => {
+    "var": {
+        "result": {
+            "changed": false, 
+            "invocation": {
+                "module_args": "name=httpd state=started", 
+                "module_complex_args": {}, 
+                "module_name": "service"
+            }, 
+            "name": "httpd", 
+            "state": "started"
+        }
+    }
+}
+
+PLAY RECAP ******************************************************************** 
+server2                    : ok=4    changed=0    unreachable=0    failed=0   
+

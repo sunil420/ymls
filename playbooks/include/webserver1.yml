@@ -1,0 +1,9 @@
+--- # My webserver
+- hosts: appserver
+  user: test
+  sudo: yes
+  gather_facts: yes
+  vars_files:
+   - variables/variables.yml
+  tasks:
+   - include: packages/packages.yml

@@ -1,0 +1,12 @@
+--- # My webserver
+- hosts: appserver
+  user: test
+  sudo: yes
+  gather_facts: no
+  tasks:
+   - name: Install httpd server
+     yum: pkg=httpd state=installed
+   - name: Copy index.html
+     copy: src=index.html  dest=/var/www/html/
+   - name: start the service
+     service: name=httpd state=started

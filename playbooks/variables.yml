@@ -1,0 +1,26 @@
+--- # My variables
+- hosts: '{{hosts}}'
+  user: '{{user}}'
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  vars:
+    pkg: httpd
+  vars_files:
+    - conf/var.yml
+  vars_prompt:
+    - name: pkg2
+      prompt: Enter the package name
+  tasks:
+   - name: Install httpd server
+     yum: pkg={{pkg}} state=installed
+   - name: Copy index.html
+     copy: src=index.html  dest=/var/www/html/
+   - name: start the service
+     service: name={{pkg}} state=started
+   - name: Installing telnet package
+     yum: name={{pkg1}} state=installed 
+   - name: Installing entered package
+     yum: name={{pkg2}} state=installed
+#   - name: Installed command line entered package
+#     yum: name={{pkg3}} state=installed

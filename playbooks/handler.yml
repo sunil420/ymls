@@ -1,0 +1,13 @@
+--- # Handler
+- hosts: appserver
+  user: test
+  sudo: yes
+  gather_facts: no
+  connection: ssh
+  tasks:
+   - name: Install httpd server
+     yum: pkg=httpd state=installed
+     notify: Restart httpd
+  handlers:
+   - name: Restart httpd
+     action: service name=httpd state=restarted
